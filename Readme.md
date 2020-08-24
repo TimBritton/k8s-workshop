@@ -50,9 +50,9 @@ If I have time I will set up a kubernetes instance that has a domain associated 
 This session will go over a couple tools from the kubernetes ecosystem.
 
 * Skaffold
- * On code change CI/CD for developers
- * Allows you to get immediate feedback on your code changes.
- * Allows for image testing (structure)
+  * On code change CI/CD for developers
+  * Allows you to get immediate feedback on your code changes.
+  * Allows for image testing (structure)
 
 * Helm
   * The kubernetes "package manager"
