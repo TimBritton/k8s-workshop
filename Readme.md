@@ -3,7 +3,7 @@
 ## Session 1: Kubernetes Overview  
   1. Part 1. Background overview of kubernetes  
     * Covers Docker, Docker Compose, Kubernetes  
-    * Covers the basic concepts at the infrastrure level
+    * Covers the basic concepts at the infrastructure level
       * Node pools etc
   2. Part 2. Kubernetes Concepts  
     * Pods  
