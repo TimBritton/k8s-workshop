@@ -48,23 +48,28 @@ If I have time I will set up a kubernetes instance that has a domain associated 
 ​
 ## Session 4: Kubernetes Ecosystem
 This session will go over a couple tools from the kubernetes ecosystem.
-​
+
+* Skaffold
+ * On code change CI/CD for developers
+ * Allows you to get immediate feedback on your code changes.
+ * Allows for image testing (structure)
+
 * Helm
   * The kubernetes "package manager"
   * Allows you to build kubernetes configurations that focuses on reproducability of the deployments.
-​
+
 * Istio
   * A control plan for kubernetes
   * Allows for side carts that provide in service mesh tls *tls everywhere*
   * Allows for canary deployments!!
     * (My favorite feature)
-​
+
 * Cloud Native foundation
   * Talk about the work still being done to expand on kubernetes
   * [https://landscape.cncf.io/](https://landscape.cncf.io/)
-​
+
 * Q/A wrap up.
-Collapse
+
 
 
 
