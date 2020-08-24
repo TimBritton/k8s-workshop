@@ -1,33 +1,21 @@
 ---
-theme: uncover
-# _class: lead
-# paginate: true
-# backgroundColor: #fff
-# backgroundImage: url('https://marp.app/assets/hero-background.jpg')
 marp: true
----
-![bg left:40% 80%](./img/kubernetes.png)
-
-# **Kubernetes**
-#### **An Overview**
-
-
-Tim Britton  
-
+theme: gaia
+_class: invert
 ---
 
-# How to write slides
-
-Split pages by horizontal ruler (`---`). It's very simple! :satisfied:
-
-```markdown
-# Slide 1
-
-foobar
+# Kubernetes
+![bg left:40% 80%](./img/kubernetes-logo.svg)
+An Introductory Guide
 
 ---
-
-# Slide 2
-
-foobar
-```
+![bg left:30% 80%](./img/docker-vector-logo.png)
+**In the beginning there was Docker**
+- Solves the "It works on my machine" problem
+- Allows users to build and package and deploy applications
+- Example: `docker run -p 80:80 nginx`
+    - runs nginx binding to the host port **80**
+---
+### Docker Pitfalls
+- When you have many applications you have to manage the toggles and deployment flags for each container
+- 
