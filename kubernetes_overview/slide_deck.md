@@ -53,6 +53,10 @@ Tim Britton
 - Extensible 
 ---
 # A Journey through k8s
+![bg](https://media.giphy.com/media/cOSp689PAhHUI/giphy.gif)
+
+
 ---
 ### Pod: The smallest unit of measurement
-- A pod is a group of containers
+- A pod is a wrapper around a container or a group of containers
+- Each pod has a QoS associated to it that k8s will use to schedule the pod
