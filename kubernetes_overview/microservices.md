@@ -36,3 +36,113 @@ __There are other trade offs I am not listing__
 
 * Deployment Complexity is solved by kubernetes but there are extensions to kubernetes that makes it even easier to handle.
 
+_It should be stressed that kubernetes is not a silver bullet but it is a good tool for managing and orchestrating your fleet of microservices._
+
+# 4. How does k8s help solve these problems
+
+## Tackling Deployment Complexity
+
+When utilizing a microservice architecture the operational complexity is the trade off for application simplicity.  We design our applications to do one thing and do that one thing very well.  But eventually you need to coordinate with other services to accomplish complex tasks.  
+
+When deploying a microservice there are three main things that need to be understood:
+
+1. What is the configuration required to deploy this application?
+  * Environment variables, config files
+  * Secrets management, (database passwords etc)
+
+2. What does this microservice talk to?  
+    * Databases, other services etc
+    * service discovery
+
+3. How is this application exposed to the internet or other services?
+  * load balancing, exposing the application to the internet.
+
+If you were to use a traditional tool chain you would have to either capture this information in a wiki or flat file somewhere or configure a series of applications to handle each of the cases.
+
+Luckily enough K8s provides a way to handle each of these cases.
+
+### Terminology Run Down
+
+In order to understand how kubernetes helps solves these problems we need to run down the basic ideas about kubernetes.
+
+#### Pod
+
+The pod is the smallest unit of measurement in kuberetes.  A pod is 1 or more containers that work together to accomplish a goal.  
+
+_Usually a pod is a single container.  In the case that its not a single container its usually a series of containers that share a given resource whether thats a disk or need to be on a shared machine.  This is an advanced topic._
+
+#### Service
+
+Services allow you to expose pods to the service mesh or to the internet as a whole.  A service is associated to any number of pods via the label selectors.
+
+The service will allow provide an in service mesh dns name for applications to connect to.
+
+#### Ingress
+
+Ingress allows the user to route http/https traffic to a given service. 
+
+#### Configmap
+
+Configmaps allow configuration files or just configuration values to be persisted in the cluster.
+
+#### Persistent Volumes
+
+Persistent Storage space for containers that require it.
+
+#### Namespace
+Pods, Ingress definitions, and services are all associated to specific namespaces.  If you try to change a resource from a different namespace you need to specifically say what namespace you are working in.
+
+### Bringing it together
+
+In Kubernetes you deploy pods via Yaml files and the cli application called kubectl.  
+
+The deployment yaml file defines:
+- The name of the pod
+- The configuration of the containers in that pod
+- The resource constraints imposed on the pod
+
+#### Example Deployment:
+``` yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        resources:
+          limits:
+            memory: "100Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 80
+```
+
+#### Example Service
+
+``` yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx # exposes this service as nginx.<namespace>
+spec:
+  selector:
+    app: nginx
+  type: ClusterIP
+  ports:
+  - port: 8080
+    targetPort: 80
+```
+
+
+
