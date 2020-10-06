@@ -69,4 +69,8 @@ _class: invert
 ---
 ### Brief overview K8s components
 ![bg left:30% 80%](./img/kubernetes-logo.svg)
-
+- Pods
+- Services
+- Ingress
+- Jobs
+---

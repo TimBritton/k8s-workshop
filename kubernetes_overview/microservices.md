@@ -138,11 +138,34 @@ metadata:
 spec:
   selector:
     app: nginx
-  type: ClusterIP
+  type: LoadBalancer
   ports:
   - port: 8080
     targetPort: 80
 ```
 
+#### Whats going on
+- Deploys an nginx container that runs on port 80
+- Deploys a service pointing to this container exposing it to the internet on port 8080
 
+
+# 5. Miscellaneous 
+
+<!-- #### Example Job
+``` yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pi
+spec:
+  template:
+    spec:
+      containers:
+      - name: pi
+        image: perl
+        command: ["perl",  "-Mbignum=bpi", "-wle", "print bpi(2000)"]
+      restartPolicy: Never
+  backoffLimit: 4
+
+``` -->
 
