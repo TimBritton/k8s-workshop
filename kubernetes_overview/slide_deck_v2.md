@@ -56,7 +56,7 @@ _class: invert
 - Secrets management
 - app resource requirements
   - ram
-  - cpu
+  - cpu shares
 ---
 # Dependencies
 - Database access?
@@ -73,4 +73,29 @@ _class: invert
 - Services
 - Ingress
 - Jobs
+- ConfigMap
 ---
+### Pod: The smallest unit of measurement
+- A pod is a wrapper around a container or a group of containers
+- Each pod has a QoS associated to it that k8s will use to schedule the pod
+- A pod has labels which is utilized to manage and manipulate the containers associated with the pod.
+---
+### Services:  A load balancer for k8s pods
+- Based on Envoy by Lift
+- Two Types:
+  - LoadBalancer
+      - Has an External IP address
+      - Usually utilizes the underlying cloud infrastructure ie AWS, Azure
+  - ClusterIP
+    - Has a DNS name in the cluster associated with it
+    - All pods should have access to it
+---
+### Ingress: Reverse Proxy handling
+- Provides TLS termination
+- Allows for routing based on Request URI to a given service
+- Associated to one namespace
+---
+### Jobs:  Scheduled Single Fire Workloads
+- Allows Scheduling via Cron syntax
+- Can access anything with in the K8s service mesh
+- Configurable to clean up after itself or stick around
